@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Duke {
+
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -8,7 +9,7 @@ public class Duke {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         Scanner echotext = new Scanner(System.in);
-        ArrayList<String> inputlist = new ArrayList<String>();
+        ArrayList<Task> inputlist = new ArrayList<Task>();
         System.out.println(logo);
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?");
@@ -16,17 +17,38 @@ public class Duke {
         String input = echotext.nextLine();
         while(!input.equals("bye")){
 
-            if(input.equals("list")){
+            if(input.equals("list")) {
 
-                for(int i = 0; i < inputlist.size(); i++){
+                System.out.println("Here are the tasks in your list:");
 
-                    int index = i + 1;
-                    System.out.println(index + ". " + inputlist.get(i));
+                for (Task p : inputlist) {
+
+                    int index = inputlist.indexOf(p) + 1;
+                    String done = p.getStatusIcon();
+                    System.out.println(index + ".[" + done + "] " + p.getDescription());
+
+                }
+            }
+            else if (input.length() > 4 && input.substring(0 , 4).equals("done")){
+
+                String complete = input.substring(5);
+                System.out.println("Nice! I've marked this task as done: ");
+
+                try{
+                    Integer index = Integer.valueOf(complete);
+                    inputlist.get(index-1).setDone(true);
+                    String done = inputlist.get(index-1).getStatusIcon();
+                    System.out.println(" [" + done + "] " + inputlist.get(index-1).getDescription());
+
+                }catch(Exception e){
+
+                    System.out.println("Error with input for done command");
                 }
             }
             else{
 
-                inputlist.add(input);
+                Task newtask = new Task(input);
+                inputlist.add(newtask);
                 System.out.println("added: " + input);
             }
 
@@ -34,6 +56,7 @@ public class Duke {
         }
 
         System.out.println("Bye. Hope to see you again soon!");
+
 
     }
 }
