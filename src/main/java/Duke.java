@@ -26,17 +26,23 @@ public class Duke {
             String[] breakdown = input.split("\\s+");
             command = breakdown[0];
 
+
             if(command.equals("todo")){
 
                 try {
                     String desc = input.substring(5);
+                    //if(desc.length() == 0){
+
+                       // #System.out.println("☹ OOPS!!! The description of a todo cannot be empty.");
+                       // continue;
+                    //}
                     Task newtodo = new Todo(desc);
                     inputlist.add(newtodo);
                     System.out.println(newtodo.connect());
                     System.out.println("Now you have " + inputlist.size() + " tasks in the list.");
                 }catch(Exception e){
 
-                    System.out.println("Error with todo input!");
+                    System.out.println("☹ OOPS!!! The format of your input is wrong. Please type 'todo <desc> ' (e.g. todo buy book");
                 }
 
             }
@@ -62,7 +68,7 @@ public class Duke {
                 System.out.println("Now you have " + inputlist.size() + " tasks in the list.");
                 }catch(Exception e){
 
-                    System.out.println("Error with deadline input!");
+                    System.out.println("☹ OOPS!!! The format of your input is wrong. Please type 'deadline <desc> /by <date/time>' (e.g. deadline return book /by Sunday)");
                 }
 
 
@@ -79,7 +85,7 @@ public class Duke {
                 System.out.println("Now you have " + inputlist.size() + " tasks in the list.");
                 }catch(Exception e){
 
-                    System.out.println("Error with event input!");
+                    System.out.println("☹ OOPS!!! The format of your input is wrong. Please type 'event <desc> /at <date/time>' (e.g. event project meeting /at Mon 2-4pm)");
                 }
             }
             else if(command.equals("done")){
@@ -94,14 +100,16 @@ public class Duke {
 
                 }catch(Exception e){
 
-                System.out.println("Error with done input!");
+                System.out.println("☹ OOPS!!! The format of your input is wrong. Please type 'done <index of task>' (e.g. done 4) ");
             }
 
             }
             else{
 
-                System.out.println("There is an error with your input");
+                System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
             }
+
+
 
             input = echotext.nextLine();
         }
