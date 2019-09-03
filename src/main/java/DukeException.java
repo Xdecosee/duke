@@ -15,7 +15,7 @@ public class DukeException {
         System.out.println("☹ OOPS!!! Wrong format for " + type);
     }
 
-    public void outOfBounds(){
+    public void outOfBounds() {
 
         System.out.println("☹ OOPS!!! Choose a number within the list!");
     }

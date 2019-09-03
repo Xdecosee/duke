@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 
 public class Task {
@@ -7,7 +8,6 @@ public class Task {
 
     public Task(String description){
 
-        System.out.println("Got it. I've added this task: ");
         this.description = description;
         this.isDone = false;
     }
@@ -37,4 +37,6 @@ public class Task {
 
         return "[" + getStatusIcon() + "] " + description ;
     }
+
+    public void addData(int id) throws IOException { }
 }
