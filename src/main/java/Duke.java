@@ -120,6 +120,7 @@ public class Duke {
         BufferedWriter bw = new BufferedWriter(new FileWriter(tempDB));
 
         String record;
+        int index = 1;
 
         while ((record = br.readLine()) != null) {
 
@@ -127,12 +128,22 @@ public class Duke {
             int savedid = Integer.parseInt(st.nextToken());
 
             if (savedid == id) {
+
                 continue;
+
             }
 
-            bw.write(record);
+            String change = Integer.toString(index);
+
+            while (st.hasMoreTokens()) {
+
+                change = change + "|" + st.nextToken();
+            }
+
+            bw.write(change);
             bw.flush();
             bw.newLine();
+            index += 1;
 
         }
 
@@ -383,13 +394,18 @@ public class Duke {
 
                     System.out.println(" Here are the matching tasks in your list:");
 
-                    for (Integer i : found) {
+                    if (found.size() != 0){
 
-                        Task toprint = dataCopy.get(i - 1);
-                        String output = i + "." + toprint.connect();
-                        System.out.println(output);
+                        for (Integer i : found) {
+
+                            Task toprint = dataCopy.get(i - 1);
+                            String output = i + "." + toprint.connect();
+                            System.out.println(output);
+
+                        }
 
                     }
+
 
                 } catch (Exception e) {
 
