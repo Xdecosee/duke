@@ -121,12 +121,12 @@ public class Duke {
 
         String record;
 
-        while( ( record = br.readLine() ) != null ) {
+        while ((record = br.readLine()) != null) {
 
             StringTokenizer st = new StringTokenizer(record, "|");
             int savedid = Integer.parseInt(st.nextToken());
 
-            if( savedid == id){
+            if (savedid == id) {
                 continue;
             }
 
@@ -144,6 +144,37 @@ public class Duke {
         tempDB.renameTo(new File("./src/main/data/DB.txt"));
 
     }
+
+    public static ArrayList<Integer> search(String term) throws IOException {
+
+        File db = new File("./src/main/data/DB.txt");
+        ArrayList<Integer> found = new ArrayList<Integer>();
+
+        BufferedReader br = new BufferedReader(new FileReader(db));
+
+        String record;
+
+        while ((record = br.readLine()) != null) {
+
+            StringTokenizer st = new StringTokenizer(record, "|");
+            int savedid = Integer.parseInt(st.nextToken());
+            String type = st.nextToken();
+            String oldbool = st.nextToken();
+            while (st.hasMoreTokens()) {
+
+                if(st.nextToken().contains(term)){
+                    found.add(savedid);
+                    break;
+                }
+            }
+
+        }
+
+        br.close();
+        return found;
+
+    }
+
 
     public static void main(String[] args) throws IOException {
 
@@ -304,16 +335,15 @@ public class Duke {
 
                 }
 
-            }
-            else if(command.equals("delete")){
+            } else if (command.equals("delete")) {
 
                 try {
                     String complete = input.substring(7);
                     Integer index = Integer.valueOf(complete);
 
-                    try{
+                    try {
 
-                        Task todelete = dataCopy.get(index - 1 );
+                        Task todelete = dataCopy.get(index - 1);
                         String output = todelete.connect();
                         dataCopy.remove(index - 1);
                         deleteRecord(index);
@@ -322,8 +352,7 @@ public class Duke {
                         System.out.println(output);
                         System.out.println("Now you have " + dataCopy.size() + " tasks in the list.");
 
-                    }
-                    catch(Exception e){
+                    } catch (Exception e) {
 
                         error.outOfBounds();
                         input = echotext.nextLine();
@@ -338,8 +367,37 @@ public class Duke {
                 }
 
 
-            }
-            else {
+            } else if (command.equals("find")) {
+
+                try {
+                    String term = input.substring(5);
+
+                    if (term.isBlank()) {
+
+                        error.wrongFormat(command);
+                        input = echotext.nextLine();
+                        continue;
+                    }
+
+                    ArrayList<Integer> found = search(term);
+
+                    System.out.println(" Here are the matching tasks in your list:");
+
+                    for (Integer i : found) {
+
+                        Task toprint = dataCopy.get(i - 1);
+                        String output = i + "." + toprint.connect();
+                        System.out.println(output);
+
+                    }
+
+                } catch (Exception e) {
+
+                    error.wrongFormat(command);
+
+                }
+
+            } else {
 
                 error.wrongCommand();
             }
