@@ -2,7 +2,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
+
 public class Duke {
+
 
     public static void start() {
 
@@ -22,7 +24,7 @@ public class Duke {
     public static ArrayList<Task> retrieveData() throws IOException {
 
         ArrayList<Task> dataCopy = new ArrayList<Task>();
-        BufferedReader br = new BufferedReader(new FileReader("./src/main/data/DB.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("C:\\duke\\src\\main\\data\\DB.txt"));
         String record;
 
         //While Loop
@@ -71,8 +73,8 @@ public class Duke {
 
     public static void updateRecord(int id) throws IOException {
 
-        File db = new File("./src/main/data/DB.txt");
-        File tempDB = new File("./src/main/data/tempdb.txt");
+        File db = new File("C:\\duke\\src\\main\\data\\DB.txt");
+        File tempDB = new File("C:\\duke\\src\\main\\data\\tempDB.txt");
 
         BufferedReader br = new BufferedReader(new FileReader(db));
         BufferedWriter bw = new BufferedWriter(new FileWriter(tempDB));
@@ -107,14 +109,14 @@ public class Duke {
         br.close();
 
         db.delete();
-        tempDB.renameTo(new File("./src/main/data/DB.txt"));
+        tempDB.renameTo(new File("C:\\duke\\src\\main\\data\\DB.txt"));
 
     }
 
     public static void deleteRecord(int id) throws IOException {
 
-        File db = new File("./src/main/data/DB.txt");
-        File tempDB = new File("./src/main/data/tempdb.txt");
+        File db = new File("C:\\duke\\src\\main\\data\\DB.txt");
+        File tempDB = new File("C:\\duke\\src\\main\\data\\tempDB.txt");
 
         BufferedReader br = new BufferedReader(new FileReader(db));
         BufferedWriter bw = new BufferedWriter(new FileWriter(tempDB));
@@ -152,13 +154,13 @@ public class Duke {
         br.close();
 
         db.delete();
-        tempDB.renameTo(new File("./src/main/data/DB.txt"));
+        tempDB.renameTo(new File("C:\\duke\\src\\main\\data\\DB.txt"));
 
     }
 
     public static ArrayList<Integer> search(String term) throws IOException {
 
-        File db = new File("./src/main/data/DB.txt");
+        File db = new File("C:\\duke\\src\\main\\data\\DB.txt");
         ArrayList<Integer> found = new ArrayList<Integer>();
 
         BufferedReader br = new BufferedReader(new FileReader(db));

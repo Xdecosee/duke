@@ -22,7 +22,7 @@ public class Todo  extends Task{
     @Override
     public void addData(int id) throws IOException {
 
-        BufferedWriter bw = new BufferedWriter( new FileWriter("./src/main/data/DB.txt",true));
+        BufferedWriter bw = new BufferedWriter( new FileWriter("C:\\duke\\src\\main\\data\\DB.txt",true));
 
         boolean done = isDone();
         int doneval = done ? 1 : 0;
