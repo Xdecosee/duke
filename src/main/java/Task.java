@@ -6,7 +6,7 @@ public class Task {
     private String description;
     private boolean isDone;
 
-    public Task(String description){
+    public Task(String description) {
 
         this.description = description;
         this.isDone = false;
@@ -24,19 +24,16 @@ public class Task {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getStatusIcon() {
+
+        return (isDone ? "\u2713" : "\u2718");
     }
 
-    public String getStatusIcon(){
+    public String connect() {
 
-        return(isDone ? "\u2713" : "\u2718");
+        return "[" + getStatusIcon() + "] " + description;
     }
 
-    public String connect(){
-
-        return "[" + getStatusIcon() + "] " + description ;
+    public void addData(int id, String directory) throws IOException {
     }
-
-    public void addData(int id) throws IOException { }
 }

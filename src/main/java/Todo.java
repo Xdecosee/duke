@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Todo  extends Task{
+public class Todo extends Task {
 
     private String type;
 
@@ -13,16 +13,16 @@ public class Todo  extends Task{
 
 
     @Override
-    public String connect(){
+    public String connect() {
 
         return type + super.connect();
 
     }
 
     @Override
-    public void addData(int id) throws IOException {
+    public void addData(int id, String directory) throws IOException {
 
-        BufferedWriter bw = new BufferedWriter( new FileWriter("C:\\duke\\src\\main\\data\\DB.txt",true));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(directory + "\\DB.txt", true));
 
         boolean done = isDone();
         int doneval = done ? 1 : 0;

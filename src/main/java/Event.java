@@ -2,7 +2,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Event extends Task{
+public class Event extends Task {
 
     private String at;
     private String type;
@@ -14,21 +14,17 @@ public class Event extends Task{
 
     }
 
-    public String getType() {
-        return type;
-    }
-
     @Override
-    public String connect(){
+    public String connect() {
 
-        return type + super.connect() + " (at: " + at+ ")";
+        return type + super.connect() + " (at: " + at + ")";
 
     }
 
     @Override
-    public void addData(int id) throws IOException {
+    public void addData(int id, String directory) throws IOException {
 
-        BufferedWriter bw = new BufferedWriter( new FileWriter("C:\\duke\\src\\main\\data\\DB.txt",true));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(directory + "\\DB.txt", true));
 
         boolean done = isDone();
         int doneval = done ? 1 : 0;
