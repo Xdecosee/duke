@@ -14,6 +14,11 @@ public class Storage {
         return directory;
     }
 
+    /**
+     * Retrieve copy of data at start up
+     *
+     * @throws IOException if database error
+     */
     public ArrayList<Task> retrieveData() throws IOException {
 
         ArrayList<Task> dataCopy = new ArrayList<Task>();
@@ -64,6 +69,12 @@ public class Storage {
 
     }
 
+    /**
+     * Update record
+     *
+     * @id id of record to be updated
+     * @throws IOException if database error
+     */
     public void updateRecord(int id) throws IOException {
 
         File db = new File(directory + "\\DB.txt");
@@ -106,6 +117,12 @@ public class Storage {
 
     }
 
+    /**
+     * delete record
+     *
+     * @id id of record to be deleted
+     * @throws IOException if database error
+     */
     public void deleteRecord(int id) throws IOException {
 
         File db = new File(directory + "\\DB.txt");
@@ -151,6 +168,12 @@ public class Storage {
         tempDB.renameTo(new File(directory + "\\DB.txt"));
     }
 
+    /**
+     * Search record
+     *
+     * @param term to search for among list of tasks
+     * @throws IOException if database error
+     */
     public ArrayList<Integer> search(String term) throws IOException {
 
         File db = new File(directory + "\\DB.txt");

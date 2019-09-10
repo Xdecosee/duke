@@ -9,6 +9,16 @@ public class Parser {
     private Storage dbhandler;
     private String directory;
 
+    /**
+     * Create an instance on Parser that make sense of user commands and
+     * execute relevant operations by calling the relevant handlers
+     *
+     * @param newinstance handler for user interface
+     * @param errorhandler handler for errors
+     * @param dbhandler handler for reading and making changes in database
+     * @param directory folder to get database files
+     * @param tlist Access the copy of task lists
+     */
     public Parser(TaskList tlist, Ui newinstance, DukeException errorhandler, Storage dbhandler, String directory) {
         this.tlist = tlist;
         this.newinstance = newinstance;
@@ -17,6 +27,11 @@ public class Parser {
         this.directory = directory;
     }
 
+    /**
+     * Make sense of user command and execute relevant operations
+     *
+     * @param input unprocessed user input
+     */
     public boolean processcmd(String input) {
 
         //Extract command from first word

@@ -20,6 +20,13 @@ public class Deadline extends Task {
 
     }
 
+    /**
+     * Add new record
+     *
+     * @param id of new record
+     * @param directory  directory of database files
+     * @throws IOException if database error
+     */
     @Override
     public void addData(int id, String directory) throws IOException {
 

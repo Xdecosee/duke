@@ -3,7 +3,13 @@ import java.io.*;
 
 public class Duke {
 
-    public static void run(String directory){
+    /**
+     * Starts a new instance of Duke app.
+     *
+     * @param directory directory where database files will be at
+     */
+
+    public static void run(String directory) {
 
         Ui newinstance = new Ui();
         newinstance.start();
@@ -28,8 +34,8 @@ public class Duke {
         }
 
 
-
     }
+
     public static void main(String[] args) throws IOException {
 
         Duke turnOn = new Duke();

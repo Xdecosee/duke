@@ -16,12 +16,21 @@ public class TaskList {
         return tasklist;
     }
 
+    /**
+     * Size of task list
+     *
+     * @return size of task list
+     */
     public int listsize() {
 
         return tasklist.size();
 
     }
 
+    /**
+     * Print out list of tasks
+     *
+     */
     public void printContents() {
 
         ArrayList<Task> dataCopy = tasklist;
@@ -32,6 +41,13 @@ public class TaskList {
         }
     }
 
+    /**
+     * Add new entry of a to-do
+     *
+     * @param input user input
+     * @param errorhandler error handler
+     * @param dbhandler database handler
+     */
     public Task addTodo(String input, DukeException errorhandler, Storage dbhandler) {
 
         try {
@@ -59,6 +75,11 @@ public class TaskList {
 
     }
 
+    /**
+     * Format Dates
+     *
+     * @param toprocess Date to process and reformat
+     */
     public String dateformat(String toprocess) throws ParseException {
 
         SimpleDateFormat inputdt = new SimpleDateFormat("dd/MM/yyyy HHmm");
@@ -69,6 +90,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Add new entry of a deadline
+     *
+     * @param input user input
+     * @param errorhandler error handler
+     * @param dbhandler database handler
+     */
     public Task addDeadline(String input, DukeException errorhandler, Storage dbhandler) {
 
 
@@ -102,7 +130,13 @@ public class TaskList {
 
     }
 
-
+    /**
+     * Add new entry of a event
+     *
+     * @param input user input
+     * @param errorhandler error handler
+     * @param dbhandler database handler
+     */
     public Task addEvent(String input, DukeException errorhandler, Storage dbhandler) {
 
         try {
@@ -134,6 +168,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Update task status as done
+     *
+     * @param input user input
+     * @param errorhandler error handler
+     * @param dbhandler database handler
+     */
     public Integer markDone(String input, DukeException errorhandler, Storage dbhandler) {
 
         try {
@@ -162,6 +203,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Delete Task
+     *
+     * @param input user input
+     * @param errorhandler error handler
+     * @param dbhandler database handler
+     */
     public String deleteEntry(String input, DukeException errorhandler, Storage dbhandler) {
 
         try {
@@ -193,6 +241,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Search for entry
+     *
+     * @param input user input
+     * @param errorhandler error handler
+     * @param dbhandler database handler
+     */
     public ArrayList<Integer> searchEntry(String input, DukeException errorhandler, Storage dbhandler) {
 
         try {
